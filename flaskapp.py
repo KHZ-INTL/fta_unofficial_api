@@ -7,6 +7,10 @@ import datetime
 # Init flask application
 app = Flask(__name__)
 
+# Load configs
+app.config.from_pyfile('flaskapp.cfg')
+
+
 
 class fta():
 
@@ -112,7 +116,8 @@ def hi(name):
 def hello(alias):
     if alias == "favicon.ico":
         return jsonify({"ERROR": "Requested - Favicon"})
-    return hi(alias) 
+    #return hi(alias) 
+    return "HI {}".format(alias)
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
