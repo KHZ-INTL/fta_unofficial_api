@@ -24,6 +24,7 @@ The server responds in the form of Json. It contains a top level key "Return" an
 {"Return":{"AIRCRAFT":"YTQ","CAPITAN":"Mike","CREW":"Charles","DATE":"10/10/2010T07:20","DESCRIPTION":"Circuits","EXCERCISE":"07","FLY_TYPE":"Dual","MODULE":"1"}}
 
 The server may respond with errors:
+
 For example, when length of alias is < 4 the response would be:
 {"ERROR": "Invalid Alias: length < 4"}
 
