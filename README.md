@@ -21,7 +21,7 @@ http://khz13.alwaysdata.net/bob123
 #### The Get response
 The server responds in the form of Json. It contains a top level key "Return" and the value contains one dictionary for each flights.An example response would be:
 
-{"Return":{"AIRCRAFT":"YTQ","CAPITAN":"Mike","CREW":"Charles","DATE":"10/10/2010T07:20","DESCRIPTION":"Circuits","EXCERCISE":"07","FLY_TYPE":"Dual","MODULE":"1"}}
+{"Return":[{"AIRCRAFT":"YTQ","CAPITAN":"Mike","CREW":"Charles","DATE":"10/10/2010T07:20","DESCRIPTION":"Circuits","EXCERCISE":"07","FLY_TYPE":"Dual","MODULE":"1"}]}
 
 The server may respond with errors:
 
