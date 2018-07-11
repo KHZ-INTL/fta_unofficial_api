@@ -103,7 +103,7 @@ class fta():
             final_list.append(temporary_dict)
         schedules_dictionary["return"] = final_list
 
-        return jsonify({'Return': schedules_dictionary})
+        return schedules_dictionary
     
 
 def hi(name):
