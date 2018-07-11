@@ -34,10 +34,10 @@ class fta():
         """
         
         if method == "iso":
-            date = datetime.datetime.strptime(data, "%d/%m/%y %H:%M").isoformat()
+            date = datetime.datetime.strptime(date, "%d/%m/%y %H:%M").isoformat()
         
         elif method == "display":
-            date = datetime.datetime.strptime(data, "%Y-%m-%dT%H:%M:%S")
+            date = datetime.datetime.strptime(date, "%Y-%m-%dT%H:%M:%S")
 
         return date 
  
@@ -50,7 +50,7 @@ class fta():
         day = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATUARDAY", "SUNDAY"]
         rem = ["Time", "Captain", "Crew", "Aircraft", "Module", "Exercise", "Description", "Fly Type"]
         #schedules_dictionary= {"DATE": "", "CAPITAN": "", "CREW": "", "AIRCRAFT": "", "MODULE": "", "EXCERCISE": "", "DESCRIPTION": "", "FLY_TYPE": ""}
-        
+        schedules_dictionary = {}
 
         
         table_data = []
@@ -67,7 +67,7 @@ class fta():
         for tr in table_rows:
             td = tr.find_all("td")
             for i in td:
-                table_data.app(i.text)
+                table_data.append(i.text)
         
         # Remove table headers
         for i in table_data:
@@ -99,9 +99,9 @@ class fta():
                 temporary_dict["EXCERCISE"] = table_data_without_header[(a + 6)]
                 temporary_dict["DESCRIPTION"] = table_data_without_header[(a + 7)]
                 temporary_dict["FLY_TYPE"] = table_data_without_header[(a + 8)]
-
-           final_list.append(temporary_dict)
-           schedules_dictionary["return"] = final_list
+        
+            final_list.append(temporary_dict)
+        schedules_dictionary["return"] = final_list
 
         return jsonify({'Return': schedules_dictionary})
     
