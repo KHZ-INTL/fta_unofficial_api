@@ -49,7 +49,8 @@ class fta():
         """
         day = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATUARDAY", "SUNDAY"]
         rem = ["Time", "Captain", "Crew", "Aircraft", "Module", "Exercise", "Description", "Fly Type"]
-        schedules_dictionary= {"DATE": "", "CAPITAN": "", "CREW": "", "AIRCRAFT": "", "MODULE": "", "EXCERCISE": "", "DESCRIPTION": "", "FLY_TYPE": ""}
+        #schedules_dictionary= {"DATE": "", "CAPITAN": "", "CREW": "", "AIRCRAFT": "", "MODULE": "", "EXCERCISE": "", "DESCRIPTION": "", "FLY_TYPE": ""}
+        
 
         
         table_data = []
@@ -75,26 +76,32 @@ class fta():
             else:
                 table_data_without_header.append(i)
 
-        # Extract index of date
+        # Extract index of dates
         for td in table_data_without_header:
             for d in day:
                 if d in str(td):
                     day_index.append((table_data_without_header.index(td)))
        
-       # Populate schedules_dictionary The return dictionary
+       # Populate schedules_dictionary 
+        final_list = []
+
         for a in day_index:
+            temporary_dict = {}
             date_time = table_data_without_header[a].split("-", 2)[1].replace(" ", "")
             date_time = date_time + " " + table_data_without_header[a + 1]
-            schedules_dictionary["DATE"] = str(self.format_date(date_time, "iso"))
+            temporary_dict["DATE"] = str(self.format_date(date_time, "iso"))
 
             if ":" in table_data_without_header[(a + 1)]:
-                schedules_dictionary["CAPITAN"] = table_data_without_header[(a + 2)]
-                schedules_dictionary["CREW"] = table_data_without_header[(a + 3)]
-                schedules_dictionary["AIRCRAFT"] = table_data_without_header[(a + 4)]
-                schedules_dictionary["MODULE"] = table_data_without_header[(a + 5)]
-                schedules_dictionary["EXCERCISE"] = table_data_without_header[(a + 6)]
-                schedules_dictionary["DESCRIPTION"] = table_data_without_header[(a + 7)]
-                schedules_dictionary["FLY_TYPE"] = table_data_without_header[(a + 8)]
+                temporary_dict["CAPITAN"] = table_data_without_header[(a + 2)]
+                temporary_dict["CREW"] = table_data_without_header[(a + 3)]
+                temporary_dict["AIRCRAFT"] = table_data_without_header[(a + 4)]
+                temporary_dict["MODULE"] = table_data_without_header[(a + 5)]
+                temporary_dict["EXCERCISE"] = table_data_without_header[(a + 6)]
+                temporary_dict["DESCRIPTION"] = table_data_without_header[(a + 7)]
+                temporary_dict["FLY_TYPE"] = table_data_without_header[(a + 8)]
+
+           final_list.append(temporary_dict)
+           schedules_dictionary["return"] = final_list
 
         return jsonify({'Return': schedules_dictionary})
     
@@ -102,7 +109,7 @@ class fta():
 def hi(name):
     a = fta(name)
     if len(name) < 4:
-        return jsonify({"ERROR": "Invalid Alias: length 4"})
+        return jsonify({"ERROR": "Invalid Alias: length <4"})
 
     last_retun = a.http_get()
     last_retun = a.parse_html(last_retun)
