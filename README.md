@@ -8,7 +8,7 @@ Python3 script that fetches FTA server for student schedules, parses date into a
 
 #### How to use?
 Send a HTTP GET request with the student alias appended at the end of URL to the server where it is hosted. Currently, the server is hosted at:
-<a target="_blank" href="http://khz13.alwaysdata.net">khz13.alwaysdata.net</a>
+~~<a target="_blank" href="http://khz13.alwaysdata.net">khz13.alwaysdata.net</a>~~. The api is no longer available at the aformentioned webhost. If you have a any ideas on another free host, let me know or host it as you wish. Please advise us of new webhost.
 
 ##### Example
 To get Bob's upcomming flights, you will need to send the following HTTP request:
