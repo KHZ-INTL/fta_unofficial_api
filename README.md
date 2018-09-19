@@ -1,5 +1,5 @@
 # FTA Unofficial API
-Python3 script that fetches FTA server for student schedules, parses date into a dict/json format. 
+Python3 script that fetches FTA server for student schedules, parses data into a dict/json format. 
 
 #### Python library dependancies
 + requests
