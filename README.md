@@ -8,15 +8,15 @@ Python3 script that fetches FTA server for student schedules, parses data into a
 
 #### How to use?
 Send a HTTP GET request with the student alias appended at the end of URL to the server where it is hosted. Currently, the server is hosted at:
-~~<a target="_blank" href="http://khz13.alwaysdata.net">khz13.alwaysdata.net</a>~~. The api is no longer available at the aformentioned webhost. If you have a any ideas on another free host, let me know or host it as you wish. Please advise us of new webhost.
+<a target="_blank" href="http://ftaapi-fta-pi.1d35.starter-us-east-1.openshiftapps.com/">OpenShift"
 
 ##### Example
 To get Bob's upcomming flights, you will need to send the following HTTP request:
-http://khz13.alwaysdata.net/<BOB's Alias>
+http://ftaapi-fta-pi.1d35.starter-us-east-1.openshiftapps.com/<BOB's Alias>
 
 Thus:
 
-http://khz13.alwaysdata.net/bob123
+http://ftaapi-fta-pi.1d35.starter-us-east-1.openshiftapps.com/bob123
 
 #### The Get response
 The server responds in the form of Json. It contains a top level key "Return" and the value contains one dictionary for each flights.An example response would be:
@@ -28,15 +28,19 @@ The server may respond with errors:
 For example, when length of alias is < 4 the response would be:
 {"ERROR": "Invalid Alias: length < 4"}
 
+##### List of things to do
++ Return errors from FTA server, eg. user credential errors and etc. 
+
 
 ##### Things to keep in mind:
 + Order of flights: The Json data does not have flights in order of time and date.
-+ Date and Time: It is formated %day/%month/%year %Hour:%Minute
++ Date and Time: It is formated %day%/%month%/%year%T%Hour%:%Minute%
 
 
 #### Server restrictions
 The server is hosted on a free account, as result of this it is limitted by:
-+ HTTP response time: the server platform pre-procecess requests using aggressive filters, this may increase the time-to-respond.
++ 1 cpu and 1GB of memory
++ Resource Hibernation: Per Openshift Starter Plan description, "Your project resources sleep after 30 minutes of inactivity, and must sleep 18 hours in a 72 hour period".
 
 
 
