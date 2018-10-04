@@ -8,7 +8,7 @@ Python3 script that fetches FTA server for student schedules, parses data into a
 
 #### How to use?
 Send a HTTP GET request with the student alias appended at the end of URL to the server where it is hosted. Currently, the server is hosted at:
-<a target="_blank" href="http://ftaapi-fta-pi.1d35.starter-us-east-1.openshiftapps.com/">OpenShift"
+<a target="_blank" href="http://ftaapi-fta-pi.1d35.starter-us-east-1.openshiftapps.com/">OpenShift</a>.
 
 ##### Example
 To get Bob's upcomming flights, you will need to send the following HTTP request:
